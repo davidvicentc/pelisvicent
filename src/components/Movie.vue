@@ -21,12 +21,10 @@ export default {
   },
   computed: {
     imgUrl() {
-      if (this.movie.poster_path === null) {
-        // eslint-disable-next-line
-        this.image = false;
-        return;
-      }
-      return `https://image.tmdb.org/t/p/original${this.movie.poster_path}`;
+      // Quedaria mejor en una arrow function XD
+      return this.movie.poster_path ? 
+             `https://image.tmdb.org/t/p/original${this.movie.poster_path}` :
+             (this.image = false);
     }
   },
 
@@ -69,9 +67,4 @@ export default {
   text-align: center;
   background-color: #dbdbdb;
   color: #b5b5b5;
-  box-sizing: border-box;
-  font-size: 1em;
-  border-radius: 4px;
-  border: 1px solid #d7d7d7;
-}
-</style>
+  box-sizing: border-box
