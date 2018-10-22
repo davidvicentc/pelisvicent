@@ -31,12 +31,13 @@ export default {
   },
 
   methods: {
-    getMovies() {
+    async getMovies() {
       this.isLoading = true;
-      movieServices.popular().then(res => {
-        this.movies = res.results;
-        this.isLoading = false;
-      });
+      
+      const { results } = await movieServices.popular()
+      
+      this.movies = results;
+      this.isLoading = false;
     }
   }
 };
