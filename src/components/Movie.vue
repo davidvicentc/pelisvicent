@@ -67,4 +67,9 @@ export default {
   text-align: center;
   background-color: #dbdbdb;
   color: #b5b5b5;
-  box-sizing: border-box
+  box-sizing: border-box;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1px solid #d7d7d7;
+}
+</style>
