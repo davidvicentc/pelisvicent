@@ -1,26 +1,28 @@
 <template>
     <div>
-      <Header />
-      <input type="text" v-model="query">
-      <div class="movieGrid">
-        <Movie v-for="(movie, key) in movies" :movie="movie" :key="key"/>
+      <h3 v-show="isLoading" class="text-center">Cargando...</h3>
+      <div v-show="!isLoading">
+        <input type="text" v-model="query">
+        <div class="movieGrid">
+          <Movie v-for="movie in movies" :movie="movie" :key="movie.id"/>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
 import movieServices from "@/services/movie";
 import Movie from "@/components/Movie";
 
 export default {
   name: "Search",
-  components: { Header, Movie },
+  components: { Movie },
 
   data() {
     return {
       query: "",
-      movies: []
+      movies: [],
+      isLoading: false
     };
   },
 
@@ -43,7 +45,11 @@ export default {
       if (this.query === "") {
         return;
       }
-      movieServices.search(query).then(res => (this.movies = res.results));
+      this.isLoading = true;
+      movieServices.search(query).then(res => {
+        this.movies = res.results;
+        this.isLoading = false;
+      });
     }
   },
   watch: {

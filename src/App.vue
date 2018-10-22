@@ -1,8 +1,17 @@
 <template>
   <div id="app">
+    <Header />
     <router-view/>
   </div>
 </template>
+
+<script>
+import Header from "./components/Header";
+export default {
+  components: { Header }
+};
+</script>
+
 
 <style>
 #app {
@@ -15,5 +24,17 @@
 
 body {
   margin: 0;
+}
+
+.movieGrid {
+  display: grid;
+  grid-gap: 15px;
+  padding: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-rows: 1fr;
+}
+
+.text-center {
+  text-align: center;
 }
 </style>

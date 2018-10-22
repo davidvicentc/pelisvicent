@@ -20,6 +20,7 @@ export default {
   background-color: rgb(255, 164, 44);
   padding: 10px;
   display: flex;
+  margin-bottom: 10px;
 }
 
 .navPV a {

@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <Header />
-    <div class="movieGrid">
-      <Movie v-for="(movie, key) in movies" :movie="movie" :key="key"/>
+    <h3 class="text-center" v-show="isLoading">Cargando...</h3>
+    <div class="movieGrid" v-show="!isLoading">
+      <Movie v-for="movie in movies" :movie="movie" :key="movie.id"/>
     </div>
   </div>
 </template>
@@ -10,20 +10,19 @@
 <script>
 // @ is an alias to /src
 import Movie from "@/components/Movie.vue";
-import Header from "@/components/Header.vue";
 import movieServices from "../services/movie";
 
 export default {
   name: "home",
   components: {
-    Movie,
-    Header
+    Movie
   },
 
   data() {
     return {
       movies: [],
-      query: ""
+      query: "",
+      isLoading: false
     };
   },
 
@@ -33,17 +32,12 @@ export default {
 
   methods: {
     getMovies() {
-      movieServices.popular().then(res => (this.movies = res.results));
+      this.isLoading = true;
+      movieServices.popular().then(res => {
+        this.movies = res.results;
+        this.isLoading = false;
+      });
     }
   }
 };
 </script>
-
-<style>
-.movieGrid {
-  display: grid;
-  grid-gap: 15px;
-  padding: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-}
-</style>
