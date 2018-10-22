@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+  <!-- Deberias usar un cssloader de lukehass ;) -->
     <h3 class="text-center" v-show="isLoading">Cargando...</h3>
     <div class="movieGrid" v-show="!isLoading">
       <Movie v-for="movie in movies" :movie="movie" :key="movie.id"/>
@@ -31,12 +32,13 @@ export default {
   },
 
   methods: {
-    getMovies() {
+    async getMovies() {
       this.isLoading = true;
-      movieServices.popular().then(res => {
-        this.movies = res.results;
-        this.isLoading = false;
-      });
+      
+      const { results } = await movieServices.popular()
+      
+      this.movies = results;
+      this.isLoading = false;
     }
   }
 };

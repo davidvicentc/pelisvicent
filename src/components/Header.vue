@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <div>
         <nav class="navPV">
             <router-link :to="{ name: 'home' }">PelisVicent</router-link>

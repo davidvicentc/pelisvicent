@@ -21,12 +21,10 @@ export default {
   },
   computed: {
     imgUrl() {
-      if (this.movie.poster_path === null) {
-        // eslint-disable-next-line
-        this.image = false;
-        return;
-      }
-      return `https://image.tmdb.org/t/p/original${this.movie.poster_path}`;
+      // Quedaria mejor en una arrow function XD
+      return this.movie.poster_path ? 
+             `https://image.tmdb.org/t/p/original${this.movie.poster_path}` :
+             (this.image = false);
     }
   },
 
