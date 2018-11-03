@@ -1,11 +1,13 @@
 <template>
-    <a @click="gotToMovie(movie.id)" class="Movie">
-      <div >
-        <img :src="this.imgUrl" v-if="this.image" alt="">
-        <div class="no-image icon-no-image" v-else>Imagen no disponible</div>
+  <div class="col-md-3">
+    <div class="card text-center" style="margin-bottom: 10px;" @click="gotToMovie(movie.id)">
+      <img class="card-img-top" :src="this.imgUrl" v-if="this.image" alt="Card image cap">
+      <div class="no-image icon-no-image" v-else>Imagen no disponible</div>
+      <div class="card-body">
+        <h5 class="card-title">{{movie.title}}</h5>
       </div>
-        <h3 class="movie-title">{{movie.title}}</h3>
-    </a>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -39,22 +41,8 @@ export default {
 </script>
 
 <style>
-.Movie {
-  border: 1px solid rgba(0, 0, 0, 0.178);
-  border-radius: 3px;
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.212);
-  width: 100%;
+.card {
   cursor: pointer;
-}
-
-.movie-title {
-  text-align: center;
-}
-
-.Movie img {
-  border-radius: 3px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-  width: 100%;
 }
 
 .no-image {

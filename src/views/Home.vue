@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h3 class="text-center" v-show="isLoading">Cargando...</h3>
-    <div class="movieGrid" v-show="!isLoading">
+    <Spinner v-show="isLoading"></Spinner>
+    <div class="row" v-show="!isLoading">
       <Movie v-for="movie in movies" :movie="movie" :key="movie.id"/>
     </div>
   </div>
@@ -10,12 +10,14 @@
 <script>
 // @ is an alias to /src
 import Movie from "@/components/Movie.vue";
+import Spinner from "@/components/Spinner";
 import movieServices from "../services/movie";
 
 export default {
   name: "home",
   components: {
-    Movie
+    Movie,
+    Spinner
   },
 
   data() {

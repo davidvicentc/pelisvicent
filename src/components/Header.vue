@@ -1,12 +1,17 @@
 <template>
-    <div>
-        <nav class="navPV">
-            <router-link :to="{ name: 'home' }">PelisVicent</router-link>
-            <div class="navPV-right">
-                <router-link :to="{ name: 'search' }" class="navSearch">Search</router-link>
-            </div>
-        </nav>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <router-link :to="{ name: 'home' }" class="navbar-brand">PelisVicent</router-link>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <router-link :to="{ name: 'search' }" class="nav-link">Search</router-link>
+        </li>
+      </ul>
     </div>
+  </nav>
 </template>
 
 <script>
@@ -16,21 +21,4 @@ export default {
 </script>
 
 <style scoped>
-.navPV {
-  background-color: rgb(255, 164, 44);
-  padding: 10px;
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.navPV a {
-  text-decoration: none;
-  color: white;
-  font-size: 17px;
-}
-
-.navPV-right {
-  text-align: right;
-  margin-left: auto;
-}
 </style>

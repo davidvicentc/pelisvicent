@@ -1,9 +1,9 @@
 <template>
     <div>
-      <h3 v-show="isLoading" class="text-center">Cargando...</h3>
+      <input type="text" v-model="query">
+      <Spinner v-show="isLoading"></Spinner>
       <div v-show="!isLoading">
-        <input type="text" v-model="query">
-        <div class="movieGrid">
+        <div class="row">
           <Movie v-for="movie in movies" :movie="movie" :key="movie.id"/>
         </div>
       </div>
@@ -13,10 +13,11 @@
 <script>
 import movieServices from "@/services/movie";
 import Movie from "@/components/Movie";
+import Spinner from "@/components/Spinner";
 
 export default {
   name: "Search",
-  components: { Movie },
+  components: { Movie, Spinner },
 
   data() {
     return {
