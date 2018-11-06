@@ -1,5 +1,5 @@
 <template>
-    <div class="loader">Loading</div>
+    <div class="loader"></div>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
 .loader {
   font-size: 10px;
   margin: 50px auto;
-  text-indent: -9999em;
   width: 11em;
   height: 11em;
   border-radius: 50%;
